@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6ae0ddafa0a74592940ef0c4ac518357" Name="Diagram1">
+        <EntityTypeShape EntityType="istakipModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblAdmin" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblAltKategori" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblAmbarHamMadde" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblBabaKategori" Width="1.5" PointX="3.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblDepartmanlar" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblFirmaCari" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblFirmalar" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblGorevDetaylar" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblGorevler" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblMainKategori" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblMalzeme" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblMalzemeGenelFiyat" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblPersonel" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblSatinalmaTeklif" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblSubKategori" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="istakipModel.TblUrunRecetesi" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="istakipModel.FK_TblPersonel_TblDepartmanlar1" ManuallyRouted="false" />
+        <AssociationConnector Association="istakipModel.FK_TblSatinalmaTeklif_TblFirmaCari" ManuallyRouted="false" />
+        <AssociationConnector Association="istakipModel.FK_TblGorevDetaylar_TblGorevler" ManuallyRouted="false" />
+        <AssociationConnector Association="istakipModel.FK_TblGorevler_TblPersonel" ManuallyRouted="false" />
+        <AssociationConnector Association="istakipModel.FK_TblGorevler_TblPersonel1" ManuallyRouted="false" />
+        <AssociationConnector Association="istakipModel.FK_TblMalzeme_TblSubKategori" ManuallyRouted="false" />
+        <AssociationConnector Association="istakipModel.FK_TblUrunRecetesi_TblMalzeme" ManuallyRouted="false" />
+        <AssociationConnector Association="istakipModel.FK_TblSatinalmaTeklif_TblPersonel" ManuallyRouted="false" />
+        <AssociationConnector Association="istakipModel.FK_TblUrunRecetesi_TblPersonel" ManuallyRouted="false" />
+        <AssociationConnector Association="istakipModel.FK_TblUrunRecetesi_TblPersonel1" ManuallyRouted="false" />
+        <AssociationConnector Association="istakipModel.FK_TblMalzeme_TblBabaKategori" />
+        <AssociationConnector Association="istakipModel.FK_TblSubKategori_TblBabaKategori" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

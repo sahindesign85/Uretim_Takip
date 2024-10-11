@@ -1,0 +1,1074 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="istakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TblAdmin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kullanici" Type="nvarchar" MaxLength="10" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TblAltKategori">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnaKategori" Type="int" />
+          <Property Name="Kategori" Type="nvarchar" MaxLength="50" />
+          <Property Name="SonGuncelleme" Type="date" />
+        </EntityType>
+        <EntityType Name="TblAmbarHamMadde">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tarih" Type="smalldatetime" />
+          <Property Name="AnaKategori" Type="int" />
+          <Property Name="AltKategori" Type="int" />
+          <Property Name="Malzeme" Type="nvarchar" MaxLength="50" />
+          <Property Name="Açıklama" Type="nvarchar" MaxLength="200" />
+          <Property Name="Birim" Type="nvarchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="TblBabaKategori">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Babakategori" Type="nvarchar" MaxLength="50" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="TblDepartmanlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TblFirmaCari">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Unvan" Type="varchar" MaxLength="70" />
+          <Property Name="Adres" Type="varchar" MaxLength="200" />
+          <Property Name="YetkiliKisi" Type="varchar" MaxLength="30" />
+          <Property Name="Telefon" Type="varchar" MaxLength="20" />
+          <Property Name="VergiDairesi" Type="varchar" MaxLength="30" />
+          <Property Name="VergiKimlikNo" Type="varchar" MaxLength="20" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="TblFirmalar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="30" />
+          <Property Name="Yetkili" Type="nvarchar" MaxLength="30" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sektör" Type="nvarchar" MaxLength="30" />
+          <Property Name="il" Type="nvarchar" MaxLength="20" />
+          <Property Name="ilçe" Type="nvarchar" MaxLength="30" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TblGorevDetaylar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gorev" Type="int" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="200" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="Saat" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="TblGorevler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GorevVeren" Type="int" />
+          <Property Name="GorevAlan" Type="int" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="500" />
+          <Property Name="Durum" Type="nvarchar" MaxLength="20" />
+          <Property Name="Tarih" Type="date" />
+        </EntityType>
+        <EntityType Name="TblMainKategori">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kategori" Type="nvarchar" MaxLength="50" />
+          <Property Name="SonGuncelleme" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="TblMalzeme">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnaKategori" Type="int" />
+          <Property Name="AltKategori" Type="int" />
+          <Property Name="Malzemeler" Type="nvarchar" MaxLength="100" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="500" />
+          <Property Name="Görsel" Type="nvarchar" MaxLength="500" />
+          <Property Name="SonGuncellenme" Type="date" />
+        </EntityType>
+        <EntityType Name="TblMalzemeGenelFiyat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Malzeme" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birim" Type="nvarchar" MaxLength="20" />
+          <Property Name="DövizCinsi" Type="nvarchar" MaxLength="10" />
+          <Property Name="BirimFiyat" Type="nvarchar" MaxLength="50" />
+          <Property Name="SonGuncelleme" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TblPersonel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="30" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="30" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" />
+          <Property Name="Görsel" Type="nvarchar" MaxLength="100" />
+          <Property Name="Departman" Type="int" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="TblSatinalmaTeklif">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeklifNo" Type="int" />
+          <Property Name="TeklifTarihi" Type="date" />
+          <Property Name="GecerlilikTarihi" Type="date" />
+          <Property Name="FirmaID" Type="int" />
+          <Property Name="OnayVerenAdID" Type="int" />
+          <Property Name="Malzeme" Type="varchar" MaxLength="100" />
+          <Property Name="Adet" Type="int" />
+          <Property Name="BirimFiyat" Type="smallmoney" />
+          <Property Name="Parabirimi" Type="varchar" MaxLength="10" />
+          <Property Name="Durum" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="TblSubKategori">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnaKategori" Type="int" />
+          <Property Name="AltKategori" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblUrunRecetesi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="Olusturan" Type="int" />
+          <Property Name="Onaylayan" Type="int" />
+          <Property Name="MaliyetHesabi" Type="smallint" />
+          <Property Name="TedarikciFirma" Type="nvarchar" MaxLength="70" />
+          <Property Name="AnaKategori" Type="int" />
+          <Property Name="AltKategori" Type="int" />
+          <Property Name="Malzeme" Type="int" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="200" />
+          <Property Name="BirimFiyat" Type="nvarchar" MaxLength="11" />
+          <Property Name="ParaBirimi" Type="nvarchar" MaxLength="11" />
+          <Property Name="Birim" Type="nvarchar" MaxLength="11" />
+          <Property Name="Miktar" Type="nvarchar" MaxLength="11" />
+          <Property Name="ToplamTutar" Type="money" />
+        </EntityType>
+        <Association Name="FK_TblGorevDetaylar_TblGorevler">
+          <End Role="TblGorevler" Type="Self.TblGorevler" Multiplicity="0..1" />
+          <End Role="TblGorevDetaylar" Type="Self.TblGorevDetaylar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblGorevler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblGorevDetaylar">
+              <PropertyRef Name="Gorev" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblGorevler_TblPersonel">
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="0..1" />
+          <End Role="TblGorevler" Type="Self.TblGorevler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblGorevler">
+              <PropertyRef Name="GorevVeren" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblGorevler_TblPersonel1">
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="0..1" />
+          <End Role="TblGorevler" Type="Self.TblGorevler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblGorevler">
+              <PropertyRef Name="GorevAlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMalzeme_TblBabaKategori1">
+          <End Role="TblBabaKategori" Type="Self.TblBabaKategori" Multiplicity="0..1" />
+          <End Role="TblMalzeme" Type="Self.TblMalzeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBabaKategori">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblMalzeme">
+              <PropertyRef Name="AnaKategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMalzeme_TblSubKategori">
+          <End Role="TblSubKategori" Type="Self.TblSubKategori" Multiplicity="0..1" />
+          <End Role="TblMalzeme" Type="Self.TblMalzeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblSubKategori">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblMalzeme">
+              <PropertyRef Name="AltKategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblPersonel_TblDepartmanlar1">
+          <End Role="TblDepartmanlar" Type="Self.TblDepartmanlar" Multiplicity="0..1" />
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblDepartmanlar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblPersonel">
+              <PropertyRef Name="Departman" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSatinalmaTeklif_TblFirmaCari">
+          <End Role="TblFirmaCari" Type="Self.TblFirmaCari" Multiplicity="0..1" />
+          <End Role="TblSatinalmaTeklif" Type="Self.TblSatinalmaTeklif" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblFirmaCari">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblSatinalmaTeklif">
+              <PropertyRef Name="FirmaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSatinalmaTeklif_TblPersonel">
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="0..1" />
+          <End Role="TblSatinalmaTeklif" Type="Self.TblSatinalmaTeklif" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblSatinalmaTeklif">
+              <PropertyRef Name="OnayVerenAdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSubKategori_TblBabaKategori">
+          <End Role="TblBabaKategori" Type="Self.TblBabaKategori" Multiplicity="0..1" />
+          <End Role="TblSubKategori" Type="Self.TblSubKategori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBabaKategori">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblSubKategori">
+              <PropertyRef Name="AnaKategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblUrunRecetesi_TblMalzeme">
+          <End Role="TblMalzeme" Type="Self.TblMalzeme" Multiplicity="0..1" />
+          <End Role="TblUrunRecetesi" Type="Self.TblUrunRecetesi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMalzeme">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblUrunRecetesi">
+              <PropertyRef Name="Malzeme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblUrunRecetesi_TblPersonel">
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="0..1" />
+          <End Role="TblUrunRecetesi" Type="Self.TblUrunRecetesi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblUrunRecetesi">
+              <PropertyRef Name="Olusturan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblUrunRecetesi_TblPersonel1">
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="0..1" />
+          <End Role="TblUrunRecetesi" Type="Self.TblUrunRecetesi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblUrunRecetesi">
+              <PropertyRef Name="Onaylayan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="istakipModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblAltKategori" EntityType="Self.TblAltKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblAmbarHamMadde" EntityType="Self.TblAmbarHamMadde" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblBabaKategori" EntityType="Self.TblBabaKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblDepartmanlar" EntityType="Self.TblDepartmanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblFirmaCari" EntityType="Self.TblFirmaCari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblFirmalar" EntityType="Self.TblFirmalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblGorevDetaylar" EntityType="Self.TblGorevDetaylar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblGorevler" EntityType="Self.TblGorevler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMainKategori" EntityType="Self.TblMainKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMalzeme" EntityType="Self.TblMalzeme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMalzemeGenelFiyat" EntityType="Self.TblMalzemeGenelFiyat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblPersonel" EntityType="Self.TblPersonel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblSatinalmaTeklif" EntityType="Self.TblSatinalmaTeklif" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblSubKategori" EntityType="Self.TblSubKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblUrunRecetesi" EntityType="Self.TblUrunRecetesi" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TblGorevDetaylar_TblGorevler" Association="Self.FK_TblGorevDetaylar_TblGorevler">
+            <End Role="TblGorevler" EntitySet="TblGorevler" />
+            <End Role="TblGorevDetaylar" EntitySet="TblGorevDetaylar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblGorevler_TblPersonel" Association="Self.FK_TblGorevler_TblPersonel">
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+            <End Role="TblGorevler" EntitySet="TblGorevler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblGorevler_TblPersonel1" Association="Self.FK_TblGorevler_TblPersonel1">
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+            <End Role="TblGorevler" EntitySet="TblGorevler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMalzeme_TblBabaKategori1" Association="Self.FK_TblMalzeme_TblBabaKategori1">
+            <End Role="TblBabaKategori" EntitySet="TblBabaKategori" />
+            <End Role="TblMalzeme" EntitySet="TblMalzeme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMalzeme_TblSubKategori" Association="Self.FK_TblMalzeme_TblSubKategori">
+            <End Role="TblSubKategori" EntitySet="TblSubKategori" />
+            <End Role="TblMalzeme" EntitySet="TblMalzeme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblPersonel_TblDepartmanlar1" Association="Self.FK_TblPersonel_TblDepartmanlar1">
+            <End Role="TblDepartmanlar" EntitySet="TblDepartmanlar" />
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSatinalmaTeklif_TblFirmaCari" Association="Self.FK_TblSatinalmaTeklif_TblFirmaCari">
+            <End Role="TblFirmaCari" EntitySet="TblFirmaCari" />
+            <End Role="TblSatinalmaTeklif" EntitySet="TblSatinalmaTeklif" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSatinalmaTeklif_TblPersonel" Association="Self.FK_TblSatinalmaTeklif_TblPersonel">
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+            <End Role="TblSatinalmaTeklif" EntitySet="TblSatinalmaTeklif" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSubKategori_TblBabaKategori" Association="Self.FK_TblSubKategori_TblBabaKategori">
+            <End Role="TblBabaKategori" EntitySet="TblBabaKategori" />
+            <End Role="TblSubKategori" EntitySet="TblSubKategori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblUrunRecetesi_TblMalzeme" Association="Self.FK_TblUrunRecetesi_TblMalzeme">
+            <End Role="TblMalzeme" EntitySet="TblMalzeme" />
+            <End Role="TblUrunRecetesi" EntitySet="TblUrunRecetesi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblUrunRecetesi_TblPersonel" Association="Self.FK_TblUrunRecetesi_TblPersonel">
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+            <End Role="TblUrunRecetesi" EntitySet="TblUrunRecetesi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblUrunRecetesi_TblPersonel1" Association="Self.FK_TblUrunRecetesi_TblPersonel1">
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+            <End Role="TblUrunRecetesi" EntitySet="TblUrunRecetesi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="istakipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TblAdmin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kullanici" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblAltKategori">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnaKategori" Type="Int32" />
+          <Property Name="Kategori" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SonGuncelleme" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TblAmbarHamMadde">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="AnaKategori" Type="Int32" />
+          <Property Name="AltKategori" Type="Int32" />
+          <Property Name="Malzeme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Açıklama" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Birim" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblBabaKategori">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Babakategori" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblMalzeme" Relationship="istakipModel.FK_TblMalzeme_TblBabaKategori" FromRole="TblBabaKategori" ToRole="TblMalzeme" />
+          <NavigationProperty Name="TblSubKategori1" Relationship="istakipModel.FK_TblSubKategori_TblBabaKategori" FromRole="TblBabaKategori" ToRole="TblSubKategori" />
+          <Property Name="Durum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TblDepartmanlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblPersonel" Relationship="Self.FK_TblPersonel_TblDepartmanlar1" FromRole="TblDepartmanlar" ToRole="TblPersonel" />
+        </EntityType>
+        <EntityType Name="TblFirmaCari">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Unvan" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Adres" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="YetkiliKisi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VergiDairesi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="VergiKimlikNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Durum" Type="Boolean" />
+          <NavigationProperty Name="TblSatinalmaTeklif" Relationship="Self.FK_TblSatinalmaTeklif_TblFirmaCari" FromRole="TblFirmaCari" ToRole="TblSatinalmaTeklif" />
+        </EntityType>
+        <EntityType Name="TblFirmalar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Yetkili" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sektör" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="il" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ilçe" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblGorevDetaylar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gorev" Type="Int32" />
+          <Property Name="Aciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="Saat" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TblGorevler" Relationship="Self.FK_TblGorevDetaylar_TblGorevler" FromRole="TblGorevDetaylar" ToRole="TblGorevler" />
+        </EntityType>
+        <EntityType Name="TblGorevler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GorevVeren" Type="Int32" />
+          <Property Name="GorevAlan" Type="Int32" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Durum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TblGorevDetaylar" Relationship="Self.FK_TblGorevDetaylar_TblGorevler" FromRole="TblGorevler" ToRole="TblGorevDetaylar" />
+          <NavigationProperty Name="TblPersonel" Relationship="Self.FK_TblGorevler_TblPersonel" FromRole="TblGorevler" ToRole="TblPersonel" />
+          <NavigationProperty Name="TblPersonel1" Relationship="Self.FK_TblGorevler_TblPersonel1" FromRole="TblGorevler" ToRole="TblPersonel" />
+        </EntityType>
+        <EntityType Name="TblMainKategori">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kategori" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SonGuncelleme" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TblMalzeme">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnaKategori" Type="Int32" />
+          <Property Name="AltKategori" Type="Int32" />
+          <Property Name="Malzemeler" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Görsel" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SonGuncellenme" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TblSubKategori" Relationship="Self.FK_TblMalzeme_TblSubKategori" FromRole="TblMalzeme" ToRole="TblSubKategori" />
+          <NavigationProperty Name="TblUrunRecetesi" Relationship="Self.FK_TblUrunRecetesi_TblMalzeme" FromRole="TblMalzeme" ToRole="TblUrunRecetesi" />
+          <NavigationProperty Name="TblBabaKategori" Relationship="istakipModel.FK_TblMalzeme_TblBabaKategori" FromRole="TblMalzeme" ToRole="TblBabaKategori" />
+        </EntityType>
+        <EntityType Name="TblMalzemeGenelFiyat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Malzeme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birim" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DövizCinsi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BirimFiyat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SonGuncelleme" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblPersonel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Görsel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Departman" Type="Int32" />
+          <Property Name="Durum" Type="Boolean" />
+          <NavigationProperty Name="TblDepartmanlar" Relationship="Self.FK_TblPersonel_TblDepartmanlar1" FromRole="TblPersonel" ToRole="TblDepartmanlar" />
+          <NavigationProperty Name="TblGorevler" Relationship="Self.FK_TblGorevler_TblPersonel" FromRole="TblPersonel" ToRole="TblGorevler" />
+          <NavigationProperty Name="TblGorevler1" Relationship="Self.FK_TblGorevler_TblPersonel1" FromRole="TblPersonel" ToRole="TblGorevler" />
+          <NavigationProperty Name="TblSatinalmaTeklif" Relationship="Self.FK_TblSatinalmaTeklif_TblPersonel" FromRole="TblPersonel" ToRole="TblSatinalmaTeklif" />
+          <NavigationProperty Name="TblUrunRecetesi" Relationship="Self.FK_TblUrunRecetesi_TblPersonel" FromRole="TblPersonel" ToRole="TblUrunRecetesi" />
+          <NavigationProperty Name="TblUrunRecetesi1" Relationship="Self.FK_TblUrunRecetesi_TblPersonel1" FromRole="TblPersonel" ToRole="TblUrunRecetesi" />
+        </EntityType>
+        <EntityType Name="TblSatinalmaTeklif">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeklifNo" Type="Int32" />
+          <Property Name="TeklifTarihi" Type="DateTime" Precision="0" />
+          <Property Name="GecerlilikTarihi" Type="DateTime" Precision="0" />
+          <Property Name="FirmaID" Type="Int32" />
+          <Property Name="OnayVerenAdID" Type="Int32" />
+          <Property Name="Malzeme" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Adet" Type="Int32" />
+          <Property Name="BirimFiyat" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Parabirimi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Durum" Type="Byte" />
+          <NavigationProperty Name="TblFirmaCari" Relationship="Self.FK_TblSatinalmaTeklif_TblFirmaCari" FromRole="TblSatinalmaTeklif" ToRole="TblFirmaCari" />
+          <NavigationProperty Name="TblPersonel" Relationship="Self.FK_TblSatinalmaTeklif_TblPersonel" FromRole="TblSatinalmaTeklif" ToRole="TblPersonel" />
+        </EntityType>
+        <EntityType Name="TblSubKategori">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnaKategori" Type="Int32" />
+          <Property Name="AltKategori" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblMalzeme" Relationship="Self.FK_TblMalzeme_TblSubKategori" FromRole="TblSubKategori" ToRole="TblMalzeme" />
+          <NavigationProperty Name="TblBabaKategori1" Relationship="istakipModel.FK_TblSubKategori_TblBabaKategori" FromRole="TblSubKategori" ToRole="TblBabaKategori" />
+        </EntityType>
+        <EntityType Name="TblUrunRecetesi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="Olusturan" Type="Int32" />
+          <Property Name="Onaylayan" Type="Int32" />
+          <Property Name="MaliyetHesabi" Type="Int16" />
+          <Property Name="TedarikciFirma" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="AnaKategori" Type="Int32" />
+          <Property Name="AltKategori" Type="Int32" />
+          <Property Name="Malzeme" Type="Int32" />
+          <Property Name="Aciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BirimFiyat" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="ParaBirimi" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Birim" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Miktar" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="ToplamTutar" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="TblMalzeme" Relationship="Self.FK_TblUrunRecetesi_TblMalzeme" FromRole="TblUrunRecetesi" ToRole="TblMalzeme" />
+          <NavigationProperty Name="TblPersonel" Relationship="Self.FK_TblUrunRecetesi_TblPersonel" FromRole="TblUrunRecetesi" ToRole="TblPersonel" />
+          <NavigationProperty Name="TblPersonel1" Relationship="Self.FK_TblUrunRecetesi_TblPersonel1" FromRole="TblUrunRecetesi" ToRole="TblPersonel" />
+        </EntityType>
+        <Association Name="FK_TblPersonel_TblDepartmanlar1">
+          <End Role="TblDepartmanlar" Type="Self.TblDepartmanlar" Multiplicity="0..1" />
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblDepartmanlar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblPersonel">
+              <PropertyRef Name="Departman" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSatinalmaTeklif_TblFirmaCari">
+          <End Role="TblFirmaCari" Type="Self.TblFirmaCari" Multiplicity="0..1" />
+          <End Role="TblSatinalmaTeklif" Type="Self.TblSatinalmaTeklif" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblFirmaCari">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblSatinalmaTeklif">
+              <PropertyRef Name="FirmaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblGorevDetaylar_TblGorevler">
+          <End Role="TblGorevler" Type="Self.TblGorevler" Multiplicity="0..1" />
+          <End Role="TblGorevDetaylar" Type="Self.TblGorevDetaylar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblGorevler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblGorevDetaylar">
+              <PropertyRef Name="Gorev" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblGorevler_TblPersonel">
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="0..1" />
+          <End Role="TblGorevler" Type="Self.TblGorevler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblGorevler">
+              <PropertyRef Name="GorevVeren" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblGorevler_TblPersonel1">
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="0..1" />
+          <End Role="TblGorevler" Type="Self.TblGorevler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblGorevler">
+              <PropertyRef Name="GorevAlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMalzeme_TblSubKategori">
+          <End Role="TblSubKategori" Type="Self.TblSubKategori" Multiplicity="0..1" />
+          <End Role="TblMalzeme" Type="Self.TblMalzeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblSubKategori">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblMalzeme">
+              <PropertyRef Name="AltKategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblUrunRecetesi_TblMalzeme">
+          <End Role="TblMalzeme" Type="Self.TblMalzeme" Multiplicity="0..1" />
+          <End Role="TblUrunRecetesi" Type="Self.TblUrunRecetesi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMalzeme">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblUrunRecetesi">
+              <PropertyRef Name="Malzeme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSatinalmaTeklif_TblPersonel">
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="0..1" />
+          <End Role="TblSatinalmaTeklif" Type="Self.TblSatinalmaTeklif" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblSatinalmaTeklif">
+              <PropertyRef Name="OnayVerenAdID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblUrunRecetesi_TblPersonel">
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="0..1" />
+          <End Role="TblUrunRecetesi" Type="Self.TblUrunRecetesi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblUrunRecetesi">
+              <PropertyRef Name="Olusturan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblUrunRecetesi_TblPersonel1">
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="0..1" />
+          <End Role="TblUrunRecetesi" Type="Self.TblUrunRecetesi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblUrunRecetesi">
+              <PropertyRef Name="Onaylayan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="istakipEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" />
+          <EntitySet Name="TblAltKategori" EntityType="Self.TblAltKategori" />
+          <EntitySet Name="TblAmbarHamMadde" EntityType="Self.TblAmbarHamMadde" />
+          <EntitySet Name="TblBabaKategori" EntityType="Self.TblBabaKategori" />
+          <EntitySet Name="TblDepartmanlar" EntityType="Self.TblDepartmanlar" />
+          <EntitySet Name="TblFirmaCari" EntityType="Self.TblFirmaCari" />
+          <EntitySet Name="TblFirmalar" EntityType="Self.TblFirmalar" />
+          <EntitySet Name="TblGorevDetaylar" EntityType="Self.TblGorevDetaylar" />
+          <EntitySet Name="TblGorevler" EntityType="Self.TblGorevler" />
+          <EntitySet Name="TblMainKategori" EntityType="Self.TblMainKategori" />
+          <EntitySet Name="TblMalzeme" EntityType="Self.TblMalzeme" />
+          <EntitySet Name="TblMalzemeGenelFiyat" EntityType="Self.TblMalzemeGenelFiyat" />
+          <EntitySet Name="TblPersonel" EntityType="Self.TblPersonel" />
+          <EntitySet Name="TblSatinalmaTeklif" EntityType="Self.TblSatinalmaTeklif" />
+          <EntitySet Name="TblSubKategori" EntityType="Self.TblSubKategori" />
+          <EntitySet Name="TblUrunRecetesi" EntityType="Self.TblUrunRecetesi" />
+          <AssociationSet Name="FK_TblPersonel_TblDepartmanlar1" Association="Self.FK_TblPersonel_TblDepartmanlar1">
+            <End Role="TblDepartmanlar" EntitySet="TblDepartmanlar" />
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSatinalmaTeklif_TblFirmaCari" Association="Self.FK_TblSatinalmaTeklif_TblFirmaCari">
+            <End Role="TblFirmaCari" EntitySet="TblFirmaCari" />
+            <End Role="TblSatinalmaTeklif" EntitySet="TblSatinalmaTeklif" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblGorevDetaylar_TblGorevler" Association="Self.FK_TblGorevDetaylar_TblGorevler">
+            <End Role="TblGorevler" EntitySet="TblGorevler" />
+            <End Role="TblGorevDetaylar" EntitySet="TblGorevDetaylar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblGorevler_TblPersonel" Association="Self.FK_TblGorevler_TblPersonel">
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+            <End Role="TblGorevler" EntitySet="TblGorevler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblGorevler_TblPersonel1" Association="Self.FK_TblGorevler_TblPersonel1">
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+            <End Role="TblGorevler" EntitySet="TblGorevler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMalzeme_TblSubKategori" Association="Self.FK_TblMalzeme_TblSubKategori">
+            <End Role="TblSubKategori" EntitySet="TblSubKategori" />
+            <End Role="TblMalzeme" EntitySet="TblMalzeme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblUrunRecetesi_TblMalzeme" Association="Self.FK_TblUrunRecetesi_TblMalzeme">
+            <End Role="TblMalzeme" EntitySet="TblMalzeme" />
+            <End Role="TblUrunRecetesi" EntitySet="TblUrunRecetesi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSatinalmaTeklif_TblPersonel" Association="Self.FK_TblSatinalmaTeklif_TblPersonel">
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+            <End Role="TblSatinalmaTeklif" EntitySet="TblSatinalmaTeklif" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblUrunRecetesi_TblPersonel" Association="Self.FK_TblUrunRecetesi_TblPersonel">
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+            <End Role="TblUrunRecetesi" EntitySet="TblUrunRecetesi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblUrunRecetesi_TblPersonel1" Association="Self.FK_TblUrunRecetesi_TblPersonel1">
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+            <End Role="TblUrunRecetesi" EntitySet="TblUrunRecetesi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMalzeme_TblBabaKategori" Association="istakipModel.FK_TblMalzeme_TblBabaKategori">
+            <End Role="TblBabaKategori" EntitySet="TblBabaKategori" />
+            <End Role="TblMalzeme" EntitySet="TblMalzeme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSubKategori_TblBabaKategori" Association="istakipModel.FK_TblSubKategori_TblBabaKategori">
+            <End Role="TblBabaKategori" EntitySet="TblBabaKategori" />
+            <End Role="TblSubKategori" EntitySet="TblSubKategori" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_TblMalzeme_TblBabaKategori">
+          <End Type="istakipModel.TblBabaKategori" Role="TblBabaKategori" Multiplicity="0..1" />
+          <End Type="istakipModel.TblMalzeme" Role="TblMalzeme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBabaKategori">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblMalzeme">
+              <PropertyRef Name="AnaKategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSubKategori_TblBabaKategori">
+          <End Type="istakipModel.TblBabaKategori" Role="TblBabaKategori" Multiplicity="0..1" />
+          <End Type="istakipModel.TblSubKategori" Role="TblSubKategori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBabaKategori">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblSubKategori">
+              <PropertyRef Name="AnaKategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="istakipModelStoreContainer" CdmEntityContainer="istakipEntities1">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="istakipModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblAdmin">
+            <EntityTypeMapping TypeName="istakipModel.TblAdmin">
+              <MappingFragment StoreEntitySet="TblAdmin">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Kullanici" ColumnName="Kullanici" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblAltKategori">
+            <EntityTypeMapping TypeName="istakipModel.TblAltKategori">
+              <MappingFragment StoreEntitySet="TblAltKategori">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AnaKategori" ColumnName="AnaKategori" />
+                <ScalarProperty Name="Kategori" ColumnName="Kategori" />
+                <ScalarProperty Name="SonGuncelleme" ColumnName="SonGuncelleme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblAmbarHamMadde">
+            <EntityTypeMapping TypeName="istakipModel.TblAmbarHamMadde">
+              <MappingFragment StoreEntitySet="TblAmbarHamMadde">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="AnaKategori" ColumnName="AnaKategori" />
+                <ScalarProperty Name="AltKategori" ColumnName="AltKategori" />
+                <ScalarProperty Name="Malzeme" ColumnName="Malzeme" />
+                <ScalarProperty Name="Açıklama" ColumnName="Açıklama" />
+                <ScalarProperty Name="Birim" ColumnName="Birim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblBabaKategori">
+            <EntityTypeMapping TypeName="istakipModel.TblBabaKategori">
+              <MappingFragment StoreEntitySet="TblBabaKategori">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Babakategori" ColumnName="Babakategori" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblDepartmanlar">
+            <EntityTypeMapping TypeName="istakipModel.TblDepartmanlar">
+              <MappingFragment StoreEntitySet="TblDepartmanlar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblFirmaCari">
+            <EntityTypeMapping TypeName="istakipModel.TblFirmaCari">
+              <MappingFragment StoreEntitySet="TblFirmaCari">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="YetkiliKisi" ColumnName="YetkiliKisi" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="VergiDairesi" ColumnName="VergiDairesi" />
+                <ScalarProperty Name="VergiKimlikNo" ColumnName="VergiKimlikNo" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblFirmalar">
+            <EntityTypeMapping TypeName="istakipModel.TblFirmalar">
+              <MappingFragment StoreEntitySet="TblFirmalar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Yetkili" ColumnName="Yetkili" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Sektör" ColumnName="Sektör" />
+                <ScalarProperty Name="il" ColumnName="il" />
+                <ScalarProperty Name="ilçe" ColumnName="ilçe" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblGorevDetaylar">
+            <EntityTypeMapping TypeName="istakipModel.TblGorevDetaylar">
+              <MappingFragment StoreEntitySet="TblGorevDetaylar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Gorev" ColumnName="Gorev" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Saat" ColumnName="Saat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblGorevler">
+            <EntityTypeMapping TypeName="istakipModel.TblGorevler">
+              <MappingFragment StoreEntitySet="TblGorevler">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GorevVeren" ColumnName="GorevVeren" />
+                <ScalarProperty Name="GorevAlan" ColumnName="GorevAlan" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMainKategori">
+            <EntityTypeMapping TypeName="istakipModel.TblMainKategori">
+              <MappingFragment StoreEntitySet="TblMainKategori">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Kategori" ColumnName="Kategori" />
+                <ScalarProperty Name="SonGuncelleme" ColumnName="SonGuncelleme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMalzeme">
+            <EntityTypeMapping TypeName="istakipModel.TblMalzeme">
+              <MappingFragment StoreEntitySet="TblMalzeme">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AnaKategori" ColumnName="AnaKategori" />
+                <ScalarProperty Name="AltKategori" ColumnName="AltKategori" />
+                <ScalarProperty Name="Malzemeler" ColumnName="Malzemeler" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Görsel" ColumnName="Görsel" />
+                <ScalarProperty Name="SonGuncellenme" ColumnName="SonGuncellenme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMalzemeGenelFiyat">
+            <EntityTypeMapping TypeName="istakipModel.TblMalzemeGenelFiyat">
+              <MappingFragment StoreEntitySet="TblMalzemeGenelFiyat">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Malzeme" ColumnName="Malzeme" />
+                <ScalarProperty Name="Birim" ColumnName="Birim" />
+                <ScalarProperty Name="DövizCinsi" ColumnName="DövizCinsi" />
+                <ScalarProperty Name="BirimFiyat" ColumnName="BirimFiyat" />
+                <ScalarProperty Name="SonGuncelleme" ColumnName="SonGuncelleme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPersonel">
+            <EntityTypeMapping TypeName="istakipModel.TblPersonel">
+              <MappingFragment StoreEntitySet="TblPersonel">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Görsel" ColumnName="Görsel" />
+                <ScalarProperty Name="Departman" ColumnName="Departman" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblSatinalmaTeklif">
+            <EntityTypeMapping TypeName="istakipModel.TblSatinalmaTeklif">
+              <MappingFragment StoreEntitySet="TblSatinalmaTeklif">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TeklifNo" ColumnName="TeklifNo" />
+                <ScalarProperty Name="TeklifTarihi" ColumnName="TeklifTarihi" />
+                <ScalarProperty Name="GecerlilikTarihi" ColumnName="GecerlilikTarihi" />
+                <ScalarProperty Name="FirmaID" ColumnName="FirmaID" />
+                <ScalarProperty Name="OnayVerenAdID" ColumnName="OnayVerenAdID" />
+                <ScalarProperty Name="Malzeme" ColumnName="Malzeme" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="BirimFiyat" ColumnName="BirimFiyat" />
+                <ScalarProperty Name="Parabirimi" ColumnName="Parabirimi" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblSubKategori">
+            <EntityTypeMapping TypeName="istakipModel.TblSubKategori">
+              <MappingFragment StoreEntitySet="TblSubKategori">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AnaKategori" ColumnName="AnaKategori" />
+                <ScalarProperty Name="AltKategori" ColumnName="AltKategori" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblUrunRecetesi">
+            <EntityTypeMapping TypeName="istakipModel.TblUrunRecetesi">
+              <MappingFragment StoreEntitySet="TblUrunRecetesi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Olusturan" ColumnName="Olusturan" />
+                <ScalarProperty Name="Onaylayan" ColumnName="Onaylayan" />
+                <ScalarProperty Name="MaliyetHesabi" ColumnName="MaliyetHesabi" />
+                <ScalarProperty Name="TedarikciFirma" ColumnName="TedarikciFirma" />
+                <ScalarProperty Name="AnaKategori" ColumnName="AnaKategori" />
+                <ScalarProperty Name="AltKategori" ColumnName="AltKategori" />
+                <ScalarProperty Name="Malzeme" ColumnName="Malzeme" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="BirimFiyat" ColumnName="BirimFiyat" />
+                <ScalarProperty Name="ParaBirimi" ColumnName="ParaBirimi" />
+                <ScalarProperty Name="Birim" ColumnName="Birim" />
+                <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+                <ScalarProperty Name="ToplamTutar" ColumnName="ToplamTutar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

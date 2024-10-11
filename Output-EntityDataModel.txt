@@ -1,0 +1,8 @@
+﻿Could not parse the configuration file. The error message is: 'Value cannot be null.
+Parameter name: projectItems'. Try editing the file manually and then saving it.
+Generated model file: Model1.edmx.
+Loading metadata from the database took 00:00:00.3801226.
+Generating the model took 00:00:00.6779130.
+Generated model file: Model1.edmx.
+Loading metadata from the database took 00:00:00.1968335.
+Generating the model took 00:00:00.4469148.
